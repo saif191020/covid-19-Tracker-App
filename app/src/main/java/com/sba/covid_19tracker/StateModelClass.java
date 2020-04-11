@@ -2,7 +2,7 @@ package com.sba.covid_19tracker;
 
 public class StateModelClass {
     private String stateName;
-    private int Con,dCon,Dec,dDec,Rec,dRec;
+    private int Con, dCon, Dec, dDec, Rec, dRec;
 
     public String getStateName() {
         return stateName;

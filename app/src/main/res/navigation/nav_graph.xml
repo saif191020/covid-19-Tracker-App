@@ -23,5 +23,24 @@
         android:id="@+id/countryFragment"
         android:name="com.sba.covid_19tracker.CountryFragment"
         android:label="fragment_country"
-        tools:layout="@layout/fragment_country" />
+        tools:layout="@layout/fragment_country" >
+        <action
+            android:id="@+id/action_countryFragment_to_stateFragment"
+            app:destination="@id/stateFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/stateFragment"
+        android:name="com.sba.covid_19tracker.StateFragment"
+        android:label="fragment_state"
+        tools:layout="@layout/fragment_state" >
+        <argument
+            android:name="StaTE_NAME"
+            app:argType="string"
+            android:defaultValue='"NONE"' />
+    </fragment>
 </navigation>

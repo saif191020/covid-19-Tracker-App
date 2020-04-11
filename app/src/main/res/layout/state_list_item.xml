@@ -9,6 +9,7 @@
     android:layout_marginTop="24dp"
     android:layout_marginEnd="24dp"
     android:layout_marginBottom="12dp"
+    android:id="@+id/state_item_constrain_layout"
     android:background="@drawable/dark_bg"
     android:orientation="vertical">
 
@@ -31,10 +32,10 @@
 
     <TextView
         android:id="@+id/state_d"
-        android:layout_width="48dp"
+        android:layout_width="39dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="7dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/work_sans"
         android:text="10000"
@@ -61,7 +62,6 @@
         android:id="@+id/state_r"
         android:layout_width="49dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="7dp"
         android:fontFamily="@font/work_sans"
         android:text="20000"
         android:textColor="@android:color/holo_green_light"
@@ -87,7 +87,6 @@
         android:id="@+id/state_c"
         android:layout_width="48sp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:fontFamily="@font/work_sans"
         android:text="10000"
         android:textColor="@android:color/white"

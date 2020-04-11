@@ -41,6 +41,7 @@
         android:id="@+id/startAppname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:transitionName="appName_transition"
         android:fontFamily="@font/crimson_text"
         android:text="@string/app_name"
         android:textAlignment="center"

@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.FragmentNavigator;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,12 +27,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class StartFragment extends Fragment {
 
-    private static final String START_LOG ="Start_Fragment_Log";
+    private static final String START_LOG = "Start_Fragment_Log";
     private ProgressBar startProgress;
     private TextView FeedBackText;
+    private TextView AppName;
 
     private FirebaseAuth firebaseAuth;
     private NavController navController;
+
     public StartFragment() {
         // Required empty public constructor
     }
@@ -52,7 +55,9 @@ public class StartFragment extends Fragment {
 
         startProgress = view.findViewById(R.id.start_progressBar);
         FeedBackText = view.findViewById(R.id.start_FeedBack);
-        navController= Navigation.findNavController(view);
+        AppName = view.findViewById(R.id.startAppname);
+
+        navController = Navigation.findNavController(view);
 
         FeedBackText.setText("Checking User Account ...");
 
@@ -72,16 +77,20 @@ public class StartFragment extends Fragment {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         FeedBackText.setText("Account Created ...");
+
+
                         navController.navigate(R.id.action_startFragment_to_countryFragment);
                     } else {
-                        Log.d(START_LOG,"Start Log: "+task.getException());
+                        Log.d(START_LOG, "Start Log: " + task.getException());
                     }
                 }
             });
 
         } else {
-            //Navigate to next Page
+            //Navigate to next Page with Transition
             FeedBackText.setText("Logged In ...");
+
+
             navController.navigate(R.id.action_startFragment_to_countryFragment);
 
         }
