@@ -38,4 +38,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
+    //Tap Target View library
+    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.13.0'
+
 }

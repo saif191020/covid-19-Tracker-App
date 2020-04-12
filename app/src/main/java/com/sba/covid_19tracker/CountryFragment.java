@@ -1,6 +1,7 @@
 package com.sba.covid_19tracker;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -28,6 +29,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,8 +49,12 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView delCONF, CONF, ACTI, delREC, REC, delDEC, DEC;
 
-    private ImageView Globe_icon ;
+    private ImageView Globe_icon;
     public static final String TAG = "COUNTRY_LOG";
+
+    public static final String my_pref_key = "sba_data";
+    public static final String KEY_FIRST = "FIRST_RUN";
+    private SharedPreferences sharedPreferences;
 
     public CountryFragment() {
         // Required empty public constructor
@@ -80,7 +87,9 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
         REC = view.findViewById(R.id.rec_country);
         delDEC = view.findViewById(R.id.delta_dec_title);
         DEC = view.findViewById(R.id.dec_country);
-        Globe_icon =view.findViewById(R.id.Globe_icon);
+        Globe_icon = view.findViewById(R.id.Globe_icon);
+
+        sharedPreferences = getActivity().getSharedPreferences(my_pref_key, Context.MODE_PRIVATE);
 
         navController = Navigation.findNavController(view);
 
@@ -91,7 +100,6 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
                 navController.navigate(R.id.action_countryFragment_to_worldFragment);
             }
         });
-
 
 
         recyclerView.setHasFixedSize(true);
@@ -109,6 +117,39 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
             }
         });
 
+        if (!sharedPreferences.contains(KEY_FIRST)) {
+            Log.d(TAG, "FIRST TIME");
+            final TapTargetSequence sequence = new TapTargetSequence(getActivity())
+                    .targets(
+                            TapTarget.forView(view.findViewById(R.id.Globe_icon), "World Tracker", "Click this icon to see World Tracker").dimColor(android.R.color.black)
+                                    .outerCircleColor(R.color.colorAccent)
+                                    .targetCircleColor(android.R.color.black)
+                                    .transparentTarget(true)
+                                    .cancelable(false)
+                                    .textColor(android.R.color.black)
+                                    .id(1),
+                            TapTarget.forView(view.findViewById(R.id.country_card_View), "India Stats", "This card shows Current India Stats")
+                                    .dimColor(android.R.color.black)
+                                    .outerCircleColor(R.color.colorAccent)
+                                    .targetCircleColor(android.R.color.black)
+                                    .transparentTarget(true)
+                                    .cancelable(false)
+                                    .textColor(android.R.color.black)
+                                    .id(2),
+                            TapTarget.forView(view.findViewById(R.id.state_recycler),"", "Click the State Name(s) for more details")
+                                    .dimColor(android.R.color.black)
+                                    .outerCircleColor(R.color.colorAccent)
+                                    .targetCircleColor(android.R.color.black)
+                                    .transparentTarget(true)
+                                    .textColor(android.R.color.black)
+                                    .id(3)
+
+                            );
+            sequence.start();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt(KEY_FIRST, 1);
+            editor.commit();
+        }
     }
 
     private void parseJSON(final StateAdapter.OnStateItemClicked con) {
@@ -179,7 +220,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
     public void onItemClicked(int position) {
         StateModelClass smc = StateList.get(position);
         String Sname = smc.getStateName();
-        // Log.d(TAG,Sname);
+        //Log.d(TAG,Sname);
 
         CountryFragmentDirections.ActionCountryFragmentToStateFragment action = CountryFragmentDirections.actionCountryFragmentToStateFragment();
         action.setStaTENAME(Sname);
