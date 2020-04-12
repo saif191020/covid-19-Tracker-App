@@ -9,42 +9,44 @@
         android:id="@+id/startFragment"
         android:name="com.sba.covid_19tracker.StartFragment"
         android:label="fragment_start"
-        tools:layout="@layout/fragment_start" >
+        tools:layout="@layout/fragment_start">
         <action
             android:id="@+id/action_startFragment_to_countryFragment"
-            app:popUpToInclusive="true"
-            app:popUpTo="@id/startFragment"
             app:destination="@id/countryFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
-            />
+            app:popUpTo="@id/startFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/countryFragment"
         android:name="com.sba.covid_19tracker.CountryFragment"
         android:label="fragment_country"
-        tools:layout="@layout/fragment_country" >
+        tools:layout="@layout/fragment_country">
         <action
             android:id="@+id/action_countryFragment_to_stateFragment"
             app:destination="@id/stateFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            />
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_countryFragment_to_worldFragment"
-            app:destination="@id/worldFragment" />
+            app:destination="@id/worldFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/stateFragment"
         android:name="com.sba.covid_19tracker.StateFragment"
         android:label="fragment_state"
-        tools:layout="@layout/fragment_state" >
+        tools:layout="@layout/fragment_state">
         <argument
             android:name="StaTE_NAME"
-            app:argType="string"
-            android:defaultValue='"NONE"' />
+            android:defaultValue='"NONE"'
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/worldFragment"
