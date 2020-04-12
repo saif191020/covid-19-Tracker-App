@@ -32,6 +32,9 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_countryFragment_to_worldFragment"
+            app:destination="@id/worldFragment" />
     </fragment>
     <fragment
         android:id="@+id/stateFragment"
@@ -43,4 +46,9 @@
             app:argType="string"
             android:defaultValue='"NONE"' />
     </fragment>
+    <fragment
+        android:id="@+id/worldFragment"
+        android:name="com.sba.covid_19tracker.WorldFragment"
+        android:label="fragment_world"
+        tools:layout="@layout/fragment_world" />
 </navigation>

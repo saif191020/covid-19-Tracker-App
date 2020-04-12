@@ -27,7 +27,6 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.StateViewHol
     }
 
 
-
     @NonNull
     @Override
     public StateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

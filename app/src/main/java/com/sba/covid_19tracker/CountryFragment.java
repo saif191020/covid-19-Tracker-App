@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class CountryFragment extends Fragment implements StateAdapter.OnStateItemClicked {
@@ -43,6 +45,8 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
     private RequestQueue requestQueue;
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView delCONF, CONF, ACTI, delREC, REC, delDEC, DEC;
+
+    private ImageView Globe_icon ;
     public static final String TAG = "COUNTRY_LOG";
 
     public CountryFragment() {
@@ -76,8 +80,19 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
         REC = view.findViewById(R.id.rec_country);
         delDEC = view.findViewById(R.id.delta_dec_title);
         DEC = view.findViewById(R.id.dec_country);
+        Globe_icon =view.findViewById(R.id.Globe_icon);
 
         navController = Navigation.findNavController(view);
+
+
+        Globe_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_countryFragment_to_worldFragment);
+            }
+        });
+
+
 
         recyclerView.setHasFixedSize(true);
 
@@ -136,6 +151,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
 
                             }
                             Log.d(TAG, "Country Frage : " + "done with all stuff");
+                            Collections.sort(StateList);
                             adapter = new StateAdapter(getActivity(), con, StateList);
                             recyclerView.setAdapter(adapter);
                             swipeRefreshLayout.setRefreshing(false);

@@ -1,0 +1,5 @@
+country_decode_list.put("USA","Uniited states");
+
+print('country_decode_list.put("',data['alpha-3'][0],'","',data['name'][0],'")',sep="")
+
+write('country_decode_list.put("'+data['alpha-3'][i]+'","'+data['name'][i]+'");')

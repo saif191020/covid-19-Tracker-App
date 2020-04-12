@@ -75,6 +75,7 @@ public class StateFragment extends Fragment {
         DistrictList = new ArrayList<>();
 
         recyclerView.setHasFixedSize(true);
+      //  getActivity().get;
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         requestQueue = Volley.newRequestQueue(getActivity());
         parseJson();
