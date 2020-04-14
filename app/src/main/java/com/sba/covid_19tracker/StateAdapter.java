@@ -43,21 +43,26 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.StateViewHol
         holder.stateCnm.setText(String.valueOf(currentItem.getCon()));
         holder.stateRec.setText(String.valueOf(currentItem.getRec()));
         holder.stateDec.setText(String.valueOf(currentItem.getDec()));
-        if (currentItem.getdCon() == 0)
+        if (currentItem.getdCon() == 0) {
+            holder.stateDCnm.setText("0");
             holder.stateDCnm.setVisibility(View.INVISIBLE);
-        else {
+        } else {
             holder.stateDCnm.setVisibility(View.VISIBLE);
             holder.stateDCnm.setText("↑" + String.valueOf(currentItem.getdCon()));
         }
 
-        if (currentItem.getdRec() == 0)
+        if (currentItem.getdRec() == 0) {
             holder.statedRec.setVisibility(View.INVISIBLE);
+            holder.statedRec.setText("0");
+        }
         else {
             holder.statedRec.setVisibility(View.VISIBLE);
             holder.statedRec.setText("↑" + String.valueOf(currentItem.getdRec()));
         }
-        if (currentItem.getdDec() == 0)
+        if (currentItem.getdDec() == 0) {
             holder.statedDec.setVisibility(View.INVISIBLE);
+            holder.statedDec.setText("0");
+        }
         else {
             holder.statedDec.setVisibility(View.VISIBLE);
             holder.statedDec.setText("↑" + String.valueOf(currentItem.getdDec()));
