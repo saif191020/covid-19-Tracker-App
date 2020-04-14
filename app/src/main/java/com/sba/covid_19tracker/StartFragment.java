@@ -33,7 +33,7 @@ public class StartFragment extends Fragment {
     private TextView FeedBackText;
     private TextView AppName;
 
-    private FirebaseAuth firebaseAuth;
+    //private FirebaseAuth firebaseAuth;
     private NavController navController;
     private Handler mWaitHandler = new Handler();
 
@@ -53,7 +53,7 @@ public class StartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        //firebaseAuth = FirebaseAuth.getInstance();
 
         startProgress = view.findViewById(R.id.start_progressBar);
         FeedBackText = view.findViewById(R.id.start_FeedBack);
@@ -61,7 +61,7 @@ public class StartFragment extends Fragment {
 
         navController = Navigation.findNavController(view);
 
-        FeedBackText.setText("Checking User Account ...");
+        FeedBackText.setText(R.string.initializing);
 
 
     }
@@ -70,7 +70,7 @@ public class StartFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        FirebaseUser currentuser = firebaseAuth.getCurrentUser();
+        /*FirebaseUser currentuser = firebaseAuth.getCurrentUser();
         if (currentuser == null) {
             // Create New User
             FeedBackText.setText("Creating Account ...");
@@ -88,9 +88,10 @@ public class StartFragment extends Fragment {
                 }
             });
 
-        } else {
+        } else {*/
             //Navigate to next Page with Transition
-            FeedBackText.setText("Logging In...");
+
+        //FeedBackText.setText("Logging In...");
 
             mWaitHandler.postDelayed(new Runnable() {
                 @Override
@@ -105,6 +106,6 @@ public class StartFragment extends Fragment {
             }, 2000);
 
 
-        }
+       // }
     }
 }
