@@ -48,6 +48,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
     private RequestQueue requestQueue;
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView delCONF, CONF, ACTI, delREC, REC, delDEC, DEC;
+    private TextView Last_updated;
 
     private ImageView Globe_icon;
     public static final String TAG = "COUNTRY_LOG";
@@ -88,6 +89,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
         delDEC = view.findViewById(R.id.delta_dec_title);
         DEC = view.findViewById(R.id.dec_country);
         Globe_icon = view.findViewById(R.id.Globe_icon);
+        Last_updated =view.findViewById(R.id.Lastt_Updated);
 
         sharedPreferences = getActivity().getSharedPreferences(my_pref_key, Context.MODE_PRIVATE);
 
@@ -171,6 +173,8 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
                                 delREC.setVisibility(View.INVISIBLE);
                             if ((country.getString("deltadeaths")).equals("0"))
                                 delDEC.setVisibility(View.INVISIBLE);
+                            Last_updated.setVisibility(View.VISIBLE);
+                            Last_updated.setText("Last Updated: "+country.getString("lastupdatedtime").split(" ")[1]);
                             delCONF.setText("[+" + country.getString("deltaconfirmed") + "]");
                             CONF.setText(country.getString("confirmed"));
                             ACTI.setText(country.getString("active"));

@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="54dp"
         android:fontFamily="@font/crimson_text"
         android:text="@string/app_name"
         android:textColor="@color/colorPrimary"
@@ -206,19 +206,18 @@
         </HorizontalScrollView>
 
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/Title_Card_view_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         app:cardBackgroundColor="@color/colorDark"
         app:cardCornerRadius="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/country_card_View">
+        app:layout_constraintTop_toBottomOf="@+id/Lastt_Updated">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -292,7 +291,7 @@
         android:id="@+id/StateRefreshLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -311,11 +310,23 @@
         android:id="@+id/Globe_icon"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginTop="74dp"
+        android:layout_marginTop="62dp"
         android:layout_marginEnd="24dp"
         android:src="@drawable/ic_globe_icon_white"
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Lastt_Updated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:text="Last Updated : 15:45:59"
+        android:textColor="@android:color/white"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/country_card_View" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
