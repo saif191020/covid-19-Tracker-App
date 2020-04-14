@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginEnd="3dp"
         android:layout_marginBottom="12dp"
         android:fontFamily="@font/work_sans"
         android:text="state_name"
@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/state_d"
-        android:layout_width="39dp"
+        android:layout_width="42dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="4dp"
@@ -40,14 +40,14 @@
         android:fontFamily="@font/work_sans"
         android:text="10000"
         android:textColor="@android:color/holo_red_light"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/state_dd"
-        android:layout_width="27dp"
+        android:layout_width="28dp"
         android:layout_height="wrap_content"
         android:text="↑100"
         android:textAlignment="textEnd"
@@ -62,17 +62,18 @@
         android:id="@+id/state_r"
         android:layout_width="49dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
         android:fontFamily="@font/work_sans"
         android:text="20000"
         android:textColor="@android:color/holo_green_light"
-        android:textSize="16sp"
+        android:textSize="15.5sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/state_dd"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/state_rd"
-        android:layout_width="27dp"
+        android:layout_width="28dp"
         android:layout_height="wrap_content"
         android:text="↑100"
         android:textAlignment="textEnd"
@@ -85,8 +86,9 @@
 
     <TextView
         android:id="@+id/state_c"
-        android:layout_width="48sp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
         android:fontFamily="@font/work_sans"
         android:text="10000"
         android:textColor="@android:color/white"
@@ -97,7 +99,7 @@
 
     <TextView
         android:id="@+id/state_cd"
-        android:layout_width="27dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="↑770"
         android:textAlignment="textEnd"
