@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +43,7 @@ public class StateFragment extends Fragment {
     private RequestQueue requestQueue;
     private String sname;
     private DistrictAdapter adapter;
+    private ProgressBar p1;
     public StateFragment() {
         // Required empty public constructor
     }
@@ -68,6 +70,7 @@ public class StateFragment extends Fragment {
 
         State_name = view.findViewById(R.id.state_STATENAME);
         recyclerView = view.findViewById(R.id.dict_recycler);
+        p1 = view.findViewById(R.id.progressBar2);
 
         Log.d(TAG, "STATE_NAME" + sname);
         State_name.setText(sname);
@@ -89,6 +92,8 @@ public class StateFragment extends Fragment {
                     public void onResponse(JSONArray response) {
                         try {
                             int stateIndex=-21;
+                            p1.setVisibility(View.GONE);
+
                                 for(int i=0;i<response.length();i++)
                                 {
                                     JSONObject state =response.getJSONObject(i);
@@ -126,6 +131,7 @@ public class StateFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+                p1.setVisibility(View.GONE);
                 Toast.makeText(getActivity(), "No Internet Connectivity", Toast.LENGTH_SHORT).show();
             }
         });

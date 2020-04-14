@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="6dp"
         android:layout_marginBottom="12dp"
         android:fontFamily="@font/work_sans"
         android:text="state_name"
@@ -72,7 +72,7 @@
 
     <TextView
         android:id="@+id/state_rd"
-        android:layout_width="26dp"
+        android:layout_width="27dp"
         android:layout_height="wrap_content"
         android:text="↑100"
         android:textAlignment="textEnd"
@@ -97,7 +97,7 @@
 
     <TextView
         android:id="@+id/state_cd"
-        android:layout_width="26dp"
+        android:layout_width="27dp"
         android:layout_height="wrap_content"
         android:text="↑770"
         android:textAlignment="textEnd"

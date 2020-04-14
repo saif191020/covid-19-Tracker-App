@@ -22,40 +22,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/country_card_View"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        app:cardBackgroundColor="@color/colorDark"
-        app:cardCornerRadius="6dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/country_AppName">
+
 
         <HorizontalScrollView
+            android:id="@+id/country_card_View"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:fillViewport="true"
+            android:background="@drawable/dark_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/country_AppName"
+
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Country_card_view1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+
                 android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/cnf_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/work_sans"
                     android:text="CONFIRMED"
 
                     android:textColor="@android:color/white"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,14 +65,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-
+                    android:gravity="center"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/work_sans"
                     android:text="ACTIVE"
 
                     android:textColor="@android:color/holo_blue_light"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     app:layout_constraintStart_toEndOf="@+id/cnf_title"
+                    app:layout_constraintEnd_toStartOf="@+id/rec_title"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
@@ -80,11 +82,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
                     android:fontFamily="@font/work_sans"
-
+                    android:gravity="center"
                     android:text="RECOVERED"
                     android:textColor="@android:color/holo_green_light"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toStartOf="@+id/Dec_title"
                     app:layout_constraintStart_toEndOf="@+id/act_title"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -92,16 +96,14 @@
                     android:id="@+id/Dec_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-
                     android:layout_marginEnd="8dp"
                     android:fontFamily="@font/work_sans"
+                    android:gravity="center"
                     android:text="DECEASED"
                     android:textColor="@android:color/holo_red_light"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/rec_title"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
@@ -111,7 +113,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/work_sans"
                     android:textColor="@android:color/white"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
+                    android:gravity="center"
                     app:layout_constraintEnd_toEndOf="@+id/cnf_title"
                     app:layout_constraintStart_toStartOf="@+id/cnf_title"
                     app:layout_constraintTop_toBottomOf="@+id/cnf_title" />
@@ -124,6 +127,7 @@
                     android:fontFamily="@font/work_sans"
                     android:textColor="@android:color/holo_green_light"
                     android:textSize="12sp"
+                    android:gravity="center"
                     app:layout_constraintEnd_toEndOf="@+id/rec_title"
                     app:layout_constraintStart_toStartOf="@+id/rec_title"
                     app:layout_constraintTop_toBottomOf="@+id/rec_title" />
@@ -134,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/work_sans"
-
+                    android:gravity="center"
                     android:textColor="@android:color/holo_red_light"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@+id/Dec_title"
@@ -148,7 +152,8 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="16dp"
                     android:textColor="@android:color/white"
-                    android:textSize="22sp"
+                    android:textSize="22dp"
+                    android:gravity="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/cnf_title"
                     app:layout_constraintStart_toStartOf="@+id/cnf_title"
@@ -161,7 +166,8 @@
                     android:layout_marginTop="27dp"
                     android:layout_marginBottom="16dp"
                     android:textColor="@android:color/holo_blue_light"
-                    android:textSize="22sp"
+                    android:textSize="22dp"
+                    android:gravity="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/act_title"
                     app:layout_constraintStart_toStartOf="@+id/act_title"
@@ -173,9 +179,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="16dp"
-
+                    android:gravity="center"
                     android:textColor="@android:color/holo_green_light"
-                    android:textSize="22sp"
+                    android:textSize="22dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/rec_title"
                     app:layout_constraintStart_toStartOf="@+id/rec_title"
@@ -187,9 +193,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="8dp"
-
+                    android:gravity="center"
                     android:textColor="@android:color/holo_red_light"
-                    android:textSize="22sp"
+                    android:textSize="22dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/Dec_title"
                     app:layout_constraintStart_toStartOf="@+id/Dec_title"
@@ -199,7 +205,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </HorizontalScrollView>
 
-    </androidx.cardview.widget.CardView>
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/Title_Card_view_1"

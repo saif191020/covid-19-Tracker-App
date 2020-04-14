@@ -11,6 +11,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.FragmentNavigator;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,7 @@ public class StartFragment extends Fragment {
 
     private FirebaseAuth firebaseAuth;
     private NavController navController;
+    private Handler mWaitHandler = new Handler();
 
     public StartFragment() {
         // Required empty public constructor
@@ -88,10 +90,20 @@ public class StartFragment extends Fragment {
 
         } else {
             //Navigate to next Page with Transition
-            FeedBackText.setText("Logged In ...");
+            FeedBackText.setText("Logging In...");
 
+            mWaitHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        navController.navigate(R.id.action_startFragment_to_countryFragment);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
-            navController.navigate(R.id.action_startFragment_to_countryFragment);
+                }
+            }, 2000);
+
 
         }
     }

@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -39,6 +41,7 @@ public class WorldFragment extends Fragment {
 
     private ArrayList<CountryModelClass> CountryList;
     private CountryAdapter adapter;
+    private ProgressBar p1;
     public static final String TAG = "WORLD_LOG";
 
     public WorldFragment() {
@@ -62,7 +65,7 @@ public class WorldFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.countries_recycler);
-
+        p1 = view.findViewById(R.id.progressBar3);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         requestQueue = Volley.newRequestQueue(getActivity());
@@ -77,6 +80,7 @@ public class WorldFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            p1.setVisibility(View.GONE);
                             Log.d(TAG, "Total : " + response.getString("count"));
                             JSONArray result = response.getJSONArray("result");
 
@@ -112,6 +116,8 @@ public class WorldFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+                p1.setVisibility(View.GONE);
+                Toast.makeText(getActivity(), "No Internet Connectivity", Toast.LENGTH_SHORT).show();
             }
         });
 
