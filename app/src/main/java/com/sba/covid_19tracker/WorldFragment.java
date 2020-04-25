@@ -74,33 +74,29 @@ public class WorldFragment extends Fragment {
     }
 
     private void parseJSON() {
-        String url = "https://covidapi.info/api/v1/global/latest";
+        String url = "https://covid19-server.chrismichael.now.sh/api/v1/AllReports";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
                             p1.setVisibility(View.GONE);
-                            Log.d(TAG, "Total : " + response.getString("count"));
-                            JSONArray result = response.getJSONArray("result");
+                            //Log.d(TAG, "Total : " + response.getString("count"));
 
-                            for (int i = 0; i < result.length(); i++) {
-                                JSONObject country = result.getJSONObject(i);
-                                Iterator iterator = country.keys();
-                                List<String> keysList = new ArrayList<String>();
-                                while (iterator.hasNext()) {
-                                    String key = (String) iterator.next();
-                                    keysList.add(key);
-                                }
-                                if (i == 0)
-                                    Log.d(TAG, keysList.get(0));
-                                String CName = keysList.get(0);
-                                JSONObject contDetails = country.getJSONObject(CName);
-                                int CC = contDetails.getInt("confirmed");
-                                int CD = contDetails.getInt("deaths");
-                                int CR = contDetails.getInt("recovered");
+                            JSONArray reports = response.getJSONArray("reports");
+                            JSONObject obj =reports.getJSONObject(0);
+                            JSONArray table =obj.getJSONArray("table");
+                            JSONArray content =table.getJSONArray(1);
 
-                                CountryList.add(new CountryModelClass(CName, CC, CD, CR));
+                            for (int i = 1; i < content.length(); i++) {
+                                JSONObject country = content.getJSONObject(i);
+                                String Cname =country.getString("Country").trim();
+                                String Con =country.getString("TotalCases").trim();
+                                String Rec =country.getString("TotalRecovered").trim();
+                                String Dea =country.getString("TotalDeaths").trim();
+
+
+                                CountryList.add(new CountryModelClass(Cname,Con,Dea,Rec));
                             }
 
                             Collections.sort(CountryList);
