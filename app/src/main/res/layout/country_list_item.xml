@@ -48,14 +48,14 @@
 
     <TextView
         android:id="@+id/country_r"
-        android:layout_width="60dp"
+        android:layout_width="61dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="7dp"
         android:fontFamily="@font/work_sans"
         android:text="200000"
         android:textAlignment="center"
         android:textColor="@android:color/holo_green_light"
-        android:textSize="16sp"
+        android:textSize="15.5sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/country_d"
         app:layout_constraintTop_toTopOf="parent" />
