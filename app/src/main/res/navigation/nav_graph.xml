@@ -47,10 +47,27 @@
             android:name="StaTE_NAME"
             android:defaultValue='"NONE"'
             app:argType="string" />
+        <action
+            android:id="@+id/action_stateFragment_to_zonesFragment"
+            app:destination="@id/zonesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/worldFragment"
         android:name="com.sba.covid_19tracker.WorldFragment"
         android:label="fragment_world"
         tools:layout="@layout/fragment_world" />
+    <fragment
+        android:id="@+id/zonesFragment"
+        android:name="com.sba.covid_19tracker.ZonesFragment"
+        android:label="fragment_zones"
+        tools:layout="@layout/fragment_zones" >
+        <argument
+            android:name="ZOnE_NAME"
+            android:defaultValue='"NONE"'
+            app:argType="string" />
+    </fragment>
 </navigation>
