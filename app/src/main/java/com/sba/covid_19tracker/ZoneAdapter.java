@@ -51,11 +51,19 @@ public class ZoneAdapter extends RecyclerView.Adapter<ZoneAdapter.ZoneViewHolder
             holder.Dname.setTextColor(Color.parseColor("#ffffff"));
             holder.Dname.setTextSize(16);
         }
+
+
         holder.constraintLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 if(!zone.getLast_update().equals("null"))
-                    Toast.makeText(context, "Last Updated On :" + zone.getLast_update(), Toast.LENGTH_SHORT).show();
+
+                if (zone.getZone_colour().startsWith("Green"))
+                    Toast.makeText(context, "Last Updated On :" + zone.getLast_update()+  "\nStatus : Green Zone", Toast.LENGTH_SHORT).show();
+                else if (zone.getZone_colour().startsWith("Orange"))
+                    Toast.makeText(context, "Last Updated On :" + zone.getLast_update() + "\nStatus : Orange Zone", Toast.LENGTH_SHORT).show();
+                else if (zone.getZone_colour().startsWith("Red"))
+                    Toast.makeText(context, "Last Updated On :" + zone.getLast_update() + "\nStatus : Red Zone", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });

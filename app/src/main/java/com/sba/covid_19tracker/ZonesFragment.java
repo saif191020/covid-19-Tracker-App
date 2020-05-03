@@ -1,5 +1,7 @@
 package com.sba.covid_19tracker;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,9 +10,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,10 +37,16 @@ public class ZonesFragment extends Fragment {
 
     private String zname;
     private TextView Zone_title;
+    private ProgressBar p1;
+
     private RecyclerView recyclerView;
     private RequestQueue requestQueue;
     private ZoneAdapter adapter;
     private ArrayList<ZoneModelClass> ZoneList;
+
+    public static final String my_pref_key = "sba_data";
+    public static final String KEY_ZONE_FIRST = "FIRST_ZONE_RUN";
+    private SharedPreferences sharedPreferences;
 
     public ZonesFragment() {
         // Required empty public constructor
@@ -63,6 +73,9 @@ public class ZonesFragment extends Fragment {
         Zone_title = view.findViewById(R.id.Zone_head);
         recyclerView = view.findViewById(R.id.Zone_recycler);
         Zone_title.setText(zname);
+        p1 = view.findViewById(R.id.progressBar3);
+        sharedPreferences = getActivity().getSharedPreferences(my_pref_key, Context.MODE_PRIVATE);
+
 
         ZoneList = new ArrayList<>();
         recyclerView.setHasFixedSize(true);
@@ -79,6 +92,7 @@ public class ZonesFragment extends Fragment {
                     public void onResponse(JSONObject response) {
 
                         try {
+                            p1.setVisibility(View.GONE);
                             ZoneList.add(new ZoneModelClass("Green Zone", "Green AAAAAAAAAA", "null"));
                             ZoneList.add(new ZoneModelClass("Orange Zone", "Orange AAAAAAAAAA", "null"));
                             ZoneList.add(new ZoneModelClass("Red Zone", "Red AAAAAAAAAA", "null"));
@@ -86,7 +100,7 @@ public class ZonesFragment extends Fragment {
                             JSONArray zones = response.getJSONArray("zones");
                             for (int i = 0; i < zones.length(); i++) {
                                 JSONObject zone = zones.getJSONObject(i);
-                                if(!zone.getString("state").equals(zname))
+                                if (!zone.getString("state").equals(zname))
                                     continue;
                                 if (zone.getString("zone").equals(""))
                                     continue;
@@ -99,7 +113,7 @@ public class ZonesFragment extends Fragment {
                             Collections.sort(ZoneList);
                             adapter = new ZoneAdapter(getActivity(), ZoneList);
                             recyclerView.setAdapter(adapter);
-
+                            checkFirstZoneRun();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -111,10 +125,21 @@ public class ZonesFragment extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
+                        p1.setVisibility(View.GONE);
                         Toast.makeText(getActivity(), "No Internet Connectivity", Toast.LENGTH_SHORT).show();
                     }
                 }
         );
         requestQueue.add(request);
+    }
+
+    private void checkFirstZoneRun() {
+        if (!sharedPreferences.contains(KEY_ZONE_FIRST)) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt(KEY_ZONE_FIRST, 1);
+            editor.commit();
+            Toast.makeText(getActivity(), "Long press any District name To see when it was updated", Toast.LENGTH_LONG).show();
+        }
+
     }
 }

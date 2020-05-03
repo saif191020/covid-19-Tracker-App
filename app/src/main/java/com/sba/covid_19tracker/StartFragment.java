@@ -98,6 +98,13 @@ public class StartFragment extends Fragment {
                 public void run() {
                     try {
                         navController.navigate(R.id.action_startFragment_to_countryFragment);
+//                        FragmentNavigator.Extras extras = new FragmentNavigator.Extras.Builder()
+//                                .addSharedElement(AppName, "appName_transition")
+//                                .build();
+//                        navController.navigate(R.id.action_startFragment_to_countryFragment,
+//                                null, // Bundle of args
+//                                null, // NavOptions
+//                                extras);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

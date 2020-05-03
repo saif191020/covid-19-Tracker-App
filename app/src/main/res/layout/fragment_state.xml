@@ -10,14 +10,17 @@
 
     <TextView
         android:id="@+id/state_STATENAME"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="64dp"
+        android:layout_marginEnd="4dp"
         android:fontFamily="@font/crimson_text"
         android:text="STATE_NAME"
         android:textColor="@color/colorPrimary"
         android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/Zone_btn"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -96,6 +99,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/dict_recycler"
         app:layout_constraintTop_toBottomOf="@+id/Title_Card_view_1" />
+
+    <Button
+        android:id="@+id/Zone_btn"
+        android:layout_width="50sp"
+        android:layout_height="20sp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/zone_btn"
+        android:text="Zones"
+        android:textAllCaps="true"
+
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/state_STATENAME"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/state_STATENAME" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
