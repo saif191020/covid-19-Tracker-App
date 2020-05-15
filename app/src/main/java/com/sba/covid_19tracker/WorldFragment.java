@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -38,10 +39,13 @@ public class WorldFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RequestQueue requestQueue;
+    private TextView nCo, Co, nRe, Re, nDe, De;
 
     private ArrayList<CountryModelClass> CountryList;
     private CountryAdapter adapter;
     private ProgressBar p1;
+
+
     public static final String TAG = "WORLD_LOG";
 
     public WorldFragment() {
@@ -66,6 +70,15 @@ public class WorldFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.countries_recycler);
         p1 = view.findViewById(R.id.progressBar3);
+
+        nCo = view.findViewById(R.id.wdelta_conf_title);
+        Co = view.findViewById(R.id.wconf_country);
+        nRe = view.findViewById(R.id.wdelta_rec_title);
+        Re = view.findViewById(R.id.wrec_country);
+        nDe = view.findViewById(R.id.wdelta_dec_title);
+        De = view.findViewById(R.id.wdec_country);
+
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         requestQueue = Volley.newRequestQueue(getActivity());
@@ -74,7 +87,7 @@ public class WorldFragment extends Fragment {
     }
 
     private void parseJSON() {
-        String url = "https://covid19-server.chrismichael.now.sh/api/v1/AllReports";
+        String url = "https://api.covid19api.com/summary";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -83,20 +96,24 @@ public class WorldFragment extends Fragment {
                             p1.setVisibility(View.GONE);
                             //Log.d(TAG, "Total : " + response.getString("count"));
 
-                            JSONArray reports = response.getJSONArray("reports");
-                            JSONObject obj =reports.getJSONObject(0);
-                            JSONArray table =obj.getJSONArray("table");
-                            JSONArray content =table.getJSONArray(1);
+                            JSONArray Countries = response.getJSONArray("Countries");
+                            JSONObject world = response.getJSONObject("Global");
 
-                            for (int i = 1; i < content.length(); i++) {
-                                JSONObject country = content.getJSONObject(i);
-                                String Cname =country.getString("Country").trim();
-                                String Con =country.getString("TotalCases").trim();
-                                String Rec =country.getString("TotalRecovered").trim();
-                                String Dea =country.getString("TotalDeaths").trim();
+                            nCo.setText("[+" + (world.getInt("NewConfirmed")) + "]");
+                            Co.setText(Integer.toString(world.getInt("TotalConfirmed")));
+                            nRe.setText("[+" + (world.getInt("NewRecovered")) + "]");
+                            Re.setText(Integer.toString(world.getInt("TotalRecovered")));
+                            nDe.setText("[+" + (world.getInt("NewDeaths")) + "]");
+                            De.setText(Integer.toString(world.getInt("TotalDeaths")));
 
 
-                                CountryList.add(new CountryModelClass(Cname,Con,Dea,Rec));
+                            for (int i = 0; i < Countries.length(); i++) {
+                                JSONObject country = Countries.getJSONObject(i);
+                                String Cname = country.getString("Country").trim();
+                                int Con = country.getInt("TotalConfirmed");
+                                int Rec = country.getInt("TotalRecovered");
+                                int Dea = country.getInt("TotalDeaths");
+                                CountryList.add(new CountryModelClass(Cname, Con, Dea, Rec));
                             }
 
                             Collections.sort(CountryList);
@@ -113,7 +130,7 @@ public class WorldFragment extends Fragment {
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
                 p1.setVisibility(View.GONE);
-                Toast.makeText(getActivity(), "No Internet Connectivity", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Uh oh. Something went Wrong\nTry Again later", Toast.LENGTH_SHORT).show();
             }
         });
 

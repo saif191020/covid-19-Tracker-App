@@ -39,15 +39,13 @@ public class ZoneAdapter extends RecyclerView.Adapter<ZoneAdapter.ZoneViewHolder
         if (zone.getDistrict_name().equals("Green Zone")) {
             holder.Dname.setTextColor(Color.parseColor("#ff669900"));
             holder.Dname.setTextSize(18);
-        }
-        else if (zone.getDistrict_name().equals("Orange Zone")) {
+        } else if (zone.getDistrict_name().equals("Orange Zone")) {
             holder.Dname.setTextColor(Color.parseColor("#ffff8800"));
             holder.Dname.setTextSize(18);
-        }
-        else if (zone.getDistrict_name().equals("Red Zone")) {
+        } else if (zone.getDistrict_name().equals("Red Zone")) {
             holder.Dname.setTextColor(Color.parseColor("#ffcc0000"));
             holder.Dname.setTextSize(18);
-        }else {
+        } else {
             holder.Dname.setTextColor(Color.parseColor("#ffffff"));
             holder.Dname.setTextSize(16);
         }
@@ -56,14 +54,14 @@ public class ZoneAdapter extends RecyclerView.Adapter<ZoneAdapter.ZoneViewHolder
         holder.constraintLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                if(!zone.getLast_update().equals("null"))
+                if (!zone.getLast_update().equals("null"))
 
-                if (zone.getZone_colour().startsWith("Green"))
-                    Toast.makeText(context, "Last Updated On :" + zone.getLast_update()+  "\nStatus : Green Zone", Toast.LENGTH_SHORT).show();
-                else if (zone.getZone_colour().startsWith("Orange"))
-                    Toast.makeText(context, "Last Updated On :" + zone.getLast_update() + "\nStatus : Orange Zone", Toast.LENGTH_SHORT).show();
-                else if (zone.getZone_colour().startsWith("Red"))
-                    Toast.makeText(context, "Last Updated On :" + zone.getLast_update() + "\nStatus : Red Zone", Toast.LENGTH_SHORT).show();
+                    if (zone.getZone_colour().startsWith("Green"))
+                        Toast.makeText(context, "Last Updated On :" + zone.getLast_update() + "\nStatus : Green Zone", Toast.LENGTH_SHORT).show();
+                    else if (zone.getZone_colour().startsWith("Orange"))
+                        Toast.makeText(context, "Last Updated On :" + zone.getLast_update() + "\nStatus : Orange Zone", Toast.LENGTH_SHORT).show();
+                    else if (zone.getZone_colour().startsWith("Red"))
+                        Toast.makeText(context, "Last Updated On :" + zone.getLast_update() + "\nStatus : Red Zone", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });

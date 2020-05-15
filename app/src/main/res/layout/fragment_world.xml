@@ -21,18 +21,171 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <HorizontalScrollView
+        android:id="@+id/world__card_View"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/dark_bg"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/World_title">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/wWorld_card_view1"
+            android:layout_width="wrap_content"
+
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/wcnf_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/work_sans"
+                android:gravity="center"
+                android:text="CONFIRMED"
+
+                android:textColor="@android:color/white"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/wrec_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/wrec_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/work_sans"
+                android:gravity="center"
+                android:text="RECOVERED"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/wDec_title"
+                app:layout_constraintStart_toEndOf="@+id/wcnf_title"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/wDec_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/work_sans"
+                android:gravity="center"
+                android:text="DECEASED"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/wrec_title"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/wdelta_conf_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/work_sans"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="@+id/wcnf_title"
+                app:layout_constraintStart_toStartOf="@+id/wcnf_title"
+                app:layout_constraintTop_toBottomOf="@+id/wcnf_title" />
+
+            <TextView
+                android:id="@+id/wdelta_rec_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/work_sans"
+                android:gravity="center"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/wrec_title"
+                app:layout_constraintStart_toStartOf="@+id/wrec_title"
+                app:layout_constraintTop_toBottomOf="@+id/wrec_title" />
+
+            <TextView
+                android:id="@+id/wdelta_dec_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/work_sans"
+                android:gravity="center"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/wDec_title"
+                app:layout_constraintStart_toStartOf="@+id/wDec_title"
+                app:layout_constraintTop_toBottomOf="@+id/wDec_title" />
+
+            <TextView
+                android:id="@+id/wconf_country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/wcnf_title"
+                app:layout_constraintStart_toStartOf="@+id/wcnf_title"
+                app:layout_constraintTop_toBottomOf="@+id/wdelta_conf_title" />
+
+            <TextView
+                android:id="@+id/wrec_country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/wrec_title"
+                app:layout_constraintStart_toStartOf="@+id/wrec_title"
+                app:layout_constraintTop_toBottomOf="@+id/wdelta_rec_title" />
+
+            <TextView
+                android:id="@+id/wdec_country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/wDec_title"
+                app:layout_constraintStart_toStartOf="@+id/wDec_title"
+                app:layout_constraintTop_toBottomOf="@+id/wdelta_dec_title"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/WTitle_Card_view_1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         app:cardBackgroundColor="@color/colorDark"
         app:cardCornerRadius="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/World_title">
+        app:layout_constraintTop_toBottomOf="@+id/world__card_View">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -106,14 +259,14 @@
         android:id="@+id/countries_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/country_list_item"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/WTitle_Card_view_1" />
+        app:layout_constraintTop_toBottomOf="@+id/WTitle_Card_view_1"
+        tools:listitem="@layout/country_list_item" />
 
     <ProgressBar
         android:id="@+id/progressBar3"
@@ -124,5 +277,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/countries_recycler"
         app:layout_constraintEnd_toEndOf="@+id/countries_recycler"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/countries_recycler" />
+        app:layout_constraintTop_toTopOf="@+id/world__card_View" />
 </androidx.constraintlayout.widget.ConstraintLayout>

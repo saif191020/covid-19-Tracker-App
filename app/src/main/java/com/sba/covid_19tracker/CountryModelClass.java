@@ -1,10 +1,10 @@
 package com.sba.covid_19tracker;
 
-public class CountryModelClass implements Comparable{
+public class CountryModelClass implements Comparable {
     private String countryName;
-    private String Conf, Des, Rec;
+    private int Conf, Des, Rec;
 
-    public CountryModelClass(String countryName, String conf, String des, String rec) {
+    public CountryModelClass(String countryName, int conf, int des, int rec) {
         this.countryName = countryName;
         Conf = conf;
         Des = des;
@@ -19,42 +19,38 @@ public class CountryModelClass implements Comparable{
         this.countryName = countryName;
     }
 
-    public String getConf() {
+    public int getConf() {
         return Conf;
     }
 
-    public void setConf(String conf) {
+    public void setConf(int conf) {
         Conf = conf;
     }
 
-    public String getDes() {
+    public int getDes() {
         return Des;
     }
 
-    public void setDes(String des) {
+    public void setDes(int des) {
         Des = des;
     }
 
-    public String getRec() {
+    public int getRec() {
         return Rec;
     }
 
-    public void setRec(String rec) {
+    public void setRec(int rec) {
         Rec = rec;
     }
 
     @Override
     public int compareTo(Object o) {
-        String comparecase=((CountryModelClass)o).getConf();
-        String a =comparecase;
-        String b =getConf();
-        if(a.equals("N/A") || a.equals(""))
-            a="0";
-        if(b.equals("N/A") || b.equals(""))
-            b="0";
-        a=a.replace(",","");
-        b=b.replace(",","");
-        return Integer.valueOf(a)-Integer.valueOf(b);
+        if (Conf == ((CountryModelClass) o).getConf())
+            return 0;
+        else if (Conf > ((CountryModelClass) o).getConf())
+            return -1;
+        else
+            return 1;
 
     }
 }
