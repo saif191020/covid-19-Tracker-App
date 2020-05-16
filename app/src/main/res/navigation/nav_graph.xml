@@ -37,6 +37,14 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_countryFragment_to_menuFragment2"
+            app:destination="@id/menuFragment"
+            app:enterAnim="@anim/slide_in_down"
+            app:exitAnim="@anim/slide_out_up"
+            app:popEnterAnim="@anim/slide_in_up"
+            app:popExitAnim="@anim/slide_out_down"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/stateFragment"
@@ -53,7 +61,7 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/worldFragment"
@@ -64,10 +72,28 @@
         android:id="@+id/zonesFragment"
         android:name="com.sba.covid_19tracker.ZonesFragment"
         android:label="fragment_zones"
-        tools:layout="@layout/fragment_zones" >
+        tools:layout="@layout/fragment_zones">
         <argument
             android:name="ZOnE_NAME"
             android:defaultValue='"NONE"'
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.sba.covid_19tracker.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_menuFragment_to_newsFragment"
+            app:destination="@id/newsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.sba.covid_19tracker.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
 </navigation>

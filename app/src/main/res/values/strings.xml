@@ -5,5 +5,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="initializing">Initializing...</string>
     <string name="m">Initializing...</string>
+    <string name="news"><u> News </u></string>
 
 </resources>

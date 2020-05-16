@@ -51,10 +51,11 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
     private TextView Last_updated;
 
     private ImageView Globe_icon;
+    private ImageView Menu_icon;
     public static final String TAG = "COUNTRY_LOG";
 
     public static final String my_pref_key = "sba_data";
-    public static final String KEY_FIRST = "FIRST_RUN";
+    public static final String KEY_FIRST = "FIRST_RUN_v2";
     private SharedPreferences sharedPreferences;
 
     public CountryFragment() {
@@ -76,7 +77,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.d(TAG, "in the activity");
 
@@ -89,6 +90,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
         delDEC = view.findViewById(R.id.delta_dec_title);
         DEC = view.findViewById(R.id.dec_country);
         Globe_icon = view.findViewById(R.id.Globe_icon);
+        Menu_icon = view.findViewById(R.id.Menu_icon);
         Last_updated =view.findViewById(R.id.Lastt_Updated);
 
         sharedPreferences = getActivity().getSharedPreferences(my_pref_key, Context.MODE_PRIVATE);
@@ -102,7 +104,12 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
                 navController.navigate(R.id.action_countryFragment_to_worldFragment);
             }
         });
-
+        Menu_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_countryFragment_to_menuFragment2);
+            }
+        });
 
         recyclerView.setHasFixedSize(true);
 
@@ -111,14 +118,18 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
         swipeRefreshLayout = view.findViewById(R.id.StateRefreshLayout);
         requestQueue = Volley.newRequestQueue(getActivity());
         final StateAdapter.OnStateItemClicked cone = this;
-        parseJSON(cone);
+        parseJSON(cone, view);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                parseJSON(cone);
+                parseJSON(cone, view);
             }
         });
 
+
+    }
+
+    private void checkFirstRun(@NonNull View view) {
         if (!sharedPreferences.contains(KEY_FIRST)) {
             Log.d(TAG, "FIRST TIME");
             final TapTargetSequence sequence = new TapTargetSequence(getActivity())
@@ -130,7 +141,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
                                     .cancelable(false)
                                     .textColor(android.R.color.black)
                                     .id(1),
-                            TapTarget.forView(view.findViewById(R.id.country_card_View), "India Stats", "This card shows Current India Stats")
+                            TapTarget.forView(view.findViewById(R.id.Menu_icon), "Menu", "Click Menu Icon To see more Stuff Like news, etc...")
                                     .dimColor(android.R.color.black)
                                     .outerCircleColor(R.color.colorAccent)
                                     .targetCircleColor(android.R.color.black)
@@ -138,15 +149,23 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
                                     .cancelable(false)
                                     .textColor(android.R.color.black)
                                     .id(2),
+                            TapTarget.forView(view.findViewById(R.id.country_card_View), "India Stats", "This card shows Current India Stats")
+                                    .dimColor(android.R.color.black)
+                                    .outerCircleColor(R.color.colorAccent)
+                                    .targetCircleColor(android.R.color.black)
+                                    .transparentTarget(true)
+                                    .cancelable(false)
+                                    .textColor(android.R.color.black)
+                                    .id(3),
                             TapTarget.forView(view.findViewById(R.id.state_recycler),"", "Click the State Name(s) for more details")
                                     .dimColor(android.R.color.black)
                                     .outerCircleColor(R.color.colorAccent)
                                     .targetCircleColor(android.R.color.black)
                                     .transparentTarget(true)
                                     .textColor(android.R.color.black)
-                                    .id(3)
+                                    .id(4)
 
-                            );
+                    );
             sequence.start();
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(KEY_FIRST, 1);
@@ -154,7 +173,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
         }
     }
 
-    private void parseJSON(final StateAdapter.OnStateItemClicked con) {
+    private void parseJSON(final StateAdapter.OnStateItemClicked con, final View view) {
         String url = "https://api.covid19india.org/data.json";
         swipeRefreshLayout.setRefreshing(true);
         StateList = new ArrayList<>();
@@ -200,6 +219,8 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
                             adapter = new StateAdapter(getActivity(), con, StateList);
                             recyclerView.setAdapter(adapter);
                             swipeRefreshLayout.setRefreshing(false);
+                            checkFirstRun(view);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Log.d(TAG, "Country Frage : " + "ERROR");

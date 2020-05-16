@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="24dp"
+    android:background="@drawable/dark_bg"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/imagecovercard"
+        android:layout_width="0dp"
+        android:layout_height="256dp"
+        app:cardBackgroundColor="@color/colorDark"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/news_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="newsImage"
+
+            android:scaleType="fitXY"
+            android:src="@drawable/sampleimage" />
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:id="@+id/im_cov"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:background="@drawable/image_cover_bg"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imagecovercard"
+        app:layout_constraintEnd_toEndOf="@+id/imagecovercard"
+
+        app:layout_constraintStart_toStartOf="@+id/imagecovercard" />
+
+    <TextView
+        android:id="@+id/news_source_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/black_bg_text"
+        android:padding="5dp"
+        android:text="Ndtv.com"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:translationZ="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imagecovercard"
+        app:layout_constraintStart_toStartOf="@+id/imagecovercard" />
+
+    <TextView
+        android:id="@+id/news_title_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/work_sans"
+        android:text="Haryana Becomes First State To Resume Bus Services Within The State - NDTV"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagecovercard" />
+
+    <TextView
+        android:id="@+id/news_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text='Congress MP Rahul Gandhi today warned the government of a \"catastrophic problem\" if it did not put money into the bank accounts of people worst affected by the coronavirus outbreak and lockdown'
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/news_title_text" />
+
+    <Button
+        android:id="@+id/full_story_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/read_btn"
+        android:padding="12dp"
+
+        android:text="Click to Read Full Story "
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/news_description"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
