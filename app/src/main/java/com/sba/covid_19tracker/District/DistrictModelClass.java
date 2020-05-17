@@ -1,4 +1,4 @@
-package com.sba.covid_19tracker;
+package com.sba.covid_19tracker.District;
 
 public class DistrictModelClass implements Comparable  {
     private String Districtname;

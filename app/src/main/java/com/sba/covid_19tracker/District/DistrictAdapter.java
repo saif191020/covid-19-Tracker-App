@@ -1,4 +1,4 @@
-package com.sba.covid_19tracker;
+package com.sba.covid_19tracker.District;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.sba.covid_19tracker.R;
 
 import java.util.ArrayList;
 

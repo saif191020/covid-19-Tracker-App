@@ -1,4 +1,4 @@
-package com.sba.covid_19tracker;
+package com.sba.covid_19tracker.State;
 
 public class StateModelClass implements Comparable {
     private String stateName;

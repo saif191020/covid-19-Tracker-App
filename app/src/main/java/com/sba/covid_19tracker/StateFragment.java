@@ -29,6 +29,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
+import com.sba.covid_19tracker.District.DistrictAdapter;
+import com.sba.covid_19tracker.District.DistrictModelClass;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,4 +1,4 @@
-package com.sba.covid_19tracker;
+package com.sba.covid_19tracker.Zone;
 
 
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.sba.covid_19tracker.R;
 
 import java.util.ArrayList;
 

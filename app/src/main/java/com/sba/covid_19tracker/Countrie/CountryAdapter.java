@@ -1,4 +1,4 @@
-package com.sba.covid_19tracker;
+package com.sba.covid_19tracker.Countrie;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,8 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.sba.covid_19tracker.R;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder> {
 

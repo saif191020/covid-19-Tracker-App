@@ -1,4 +1,4 @@
-package com.sba.covid_19tracker;
+package com.sba.covid_19tracker.Zone;
 
 public class ZoneModelClass implements Comparable {
     String District_name,Zone_colour, Last_update;
