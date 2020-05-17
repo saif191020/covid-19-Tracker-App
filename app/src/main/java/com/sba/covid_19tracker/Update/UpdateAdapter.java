@@ -30,7 +30,7 @@ public class UpdateAdapter extends RecyclerView.Adapter<UpdateAdapter.UpdateView
         this.updateList = updateList;
         sdf = new SimpleDateFormat("dd MMM HH:mm");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT+5:30"));
-        //TODO: Fix The time Issue
+
         Log.d(TAG, "o/p " + TimeZone.getTimeZone("GMT+5:30"));
     }
 

@@ -2,6 +2,7 @@ package com.sba.covid_19tracker;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -91,7 +92,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
         DEC = view.findViewById(R.id.dec_country);
         Globe_icon = view.findViewById(R.id.Globe_icon);
         Menu_icon = view.findViewById(R.id.Menu_icon);
-        Last_updated =view.findViewById(R.id.Lastt_Updated);
+        Last_updated = view.findViewById(R.id.Lastt_Updated);
 
         sharedPreferences = getActivity().getSharedPreferences(my_pref_key, Context.MODE_PRIVATE);
 
@@ -157,7 +158,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
                                     .cancelable(false)
                                     .textColor(android.R.color.black)
                                     .id(3),
-                            TapTarget.forView(view.findViewById(R.id.state_recycler),"", "Click the State Name(s) for more details")
+                            TapTarget.forView(view.findViewById(R.id.state_recycler), "", "Click the State Name(s) for more details")
                                     .dimColor(android.R.color.black)
                                     .outerCircleColor(R.color.colorAccent)
                                     .targetCircleColor(android.R.color.black)
@@ -193,7 +194,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
                             if ((country.getString("deltadeaths")).equals("0"))
                                 delDEC.setVisibility(View.INVISIBLE);
                             Last_updated.setVisibility(View.VISIBLE);
-                            Last_updated.setText("Last Updated: "+country.getString("lastupdatedtime").split(" ")[1]);
+                            Last_updated.setText("Last Updated: " + country.getString("lastupdatedtime").split(" ")[1]);
                             delCONF.setText("[+" + country.getString("deltaconfirmed") + "]");
                             CONF.setText(country.getString("confirmed"));
                             ACTI.setText(country.getString("active"));
@@ -232,7 +233,10 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
                 swipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(getActivity(), "No Internet Connectivity", Toast.LENGTH_SHORT).show();
+                if (isNetworkConnected())
+                    Toast.makeText(getActivity(), "Something Went wrong ! Try Again later", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getActivity(), "No Internet Connectivity", Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -250,5 +254,11 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
         CountryFragmentDirections.ActionCountryFragmentToStateFragment action = CountryFragmentDirections.actionCountryFragmentToStateFragment();
         action.setStaTENAME(Sname);
         navController.navigate(action);
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 }

@@ -1,6 +1,7 @@
 package com.sba.covid_19tracker;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -114,8 +115,11 @@ public class UpdateFragment extends Fragment {
                         error.printStackTrace();
                         p1.setVisibility(View.GONE);
                         Log.d(TAG, "SOME PROBLEM " + String.valueOf(error));
-                        Toast.makeText(getActivity(), "No Internet Connectivity", Toast.LENGTH_SHORT).show();
-                        p1.setVisibility(View.GONE);
+                        if (isNetworkConnected())
+                            Toast.makeText(getActivity(), "Something Went wrong ! Try Again later", Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(getActivity(), "No Internet Connectivity", Toast.LENGTH_SHORT).show();
+
                     }
 
                 }
@@ -123,5 +127,11 @@ public class UpdateFragment extends Fragment {
         requestQueue.add(request);
 
 
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 }
