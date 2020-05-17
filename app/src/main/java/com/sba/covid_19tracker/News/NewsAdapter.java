@@ -38,13 +38,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
-        //TODO
         final NewsModelClass news = newsList.get(position);
 
         holder.source.setText(news.getSourceName());
         holder.title.setText(news.getTitle());
         holder.decription.setText(news.getDescription());
-        Glide.with(context).load(news.getUrlImage()).into(holder.newsImage);
+        Glide
+                .with(context)
+                .load(news.getUrlImage())
+                .into(holder.newsImage);
 
         holder.readMore.setOnClickListener(new View.OnClickListener() {
             @Override

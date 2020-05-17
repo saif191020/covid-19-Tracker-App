@@ -22,7 +22,7 @@ public class MenuFragment extends Fragment {
         // Required empty public constructor
     }
 
-    private ConstraintLayout news, about;
+    private ConstraintLayout news, about, updates;
     private NavController navController;
 
 
@@ -45,6 +45,7 @@ public class MenuFragment extends Fragment {
 
         news = view.findViewById(R.id.news_constrain);
         about = view.findViewById(R.id.about_constrain);
+        updates = view.findViewById(R.id.update_constrain);
         navController = Navigation.findNavController(view);
 
         news.setOnClickListener(new View.OnClickListener() {
@@ -56,9 +57,16 @@ public class MenuFragment extends Fragment {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO : Add About page
-                Toast.makeText(getContext(), "about Clicked", Toast.LENGTH_SHORT).show();
+                navController.navigate(R.id.action_menuFragment_to_aboutFragment);
             }
         });
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO: Update
+            }
+        });
+
+        //TODO: Whats New Page
     }
 }
