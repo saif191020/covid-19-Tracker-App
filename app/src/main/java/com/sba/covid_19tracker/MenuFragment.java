@@ -60,10 +60,10 @@ public class MenuFragment extends Fragment {
                 navController.navigate(R.id.action_menuFragment_to_aboutFragment);
             }
         });
-        about.setOnClickListener(new View.OnClickListener() {
+        updates.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Update
+                navController.navigate(R.id.action_menuFragment_to_updateFragment);
             }
         });
 
