@@ -89,6 +89,9 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
 
+
+/stuff
+
 # Version control
 vcs.xml
 
