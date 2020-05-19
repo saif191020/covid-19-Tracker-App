@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,9 @@ public class WorldFragment extends Fragment {
 
 
     public static final String TAG = "WORLD_LOG";
+
+    private int globalCounter = 0;
+
 
     public WorldFragment() {
         // Required empty public constructor
@@ -89,6 +93,7 @@ public class WorldFragment extends Fragment {
 
     private void parseJSON() {
         String url = "https://api.covid19api.com/summary";
+        Log.d(TAG, "FUNCTION_RUNNING" + globalCounter);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -131,7 +136,17 @@ public class WorldFragment extends Fragment {
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
                 p1.setVisibility(View.GONE);
-                if (isNetworkConnected())
+                if (error.networkResponse.statusCode == 429) {
+                    //Toast.makeText(getActivity(), "Too Many Requests!", Toast.LENGTH_SHORT).show();
+                    //Log.d(TAG,"Too Many Requests!");
+                    globalCounter++;
+                    if (globalCounter >= 3) {
+                        Log.d(TAG, "Failed...");
+                        Toast.makeText(getActivity(), "Something Went wrong ! Try Again later", Toast.LENGTH_SHORT).show();
+                    } else {
+                        parseJSON();
+                    }
+                } else if (isNetworkConnected())
                     Toast.makeText(getActivity(), "Something Went wrong ! Try Again later", Toast.LENGTH_SHORT).show();
                 else
                     Toast.makeText(getActivity(), "No Internet Connectivity", Toast.LENGTH_SHORT).show();
