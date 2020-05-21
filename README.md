@@ -45,7 +45,7 @@ The [The News Api](https://newsapi.org/) was used to provide the Covid related N
 
 
 ## 🔖 License
-[Apache-2.0]()
+[Apache-2.0](LICENSE)
 
 ***
 > Feel free to star ⭐ this repository if you like what you see 😉.
