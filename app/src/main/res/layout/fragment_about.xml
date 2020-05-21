@@ -53,13 +53,14 @@
                     android:layout_width="95dp"
                     android:layout_height="95dp"
                     android:layout_gravity="center"
+                    app:cardBackgroundColor="@color/colorPrimaryDark"
                     app:cardCornerRadius="250dp">
 
                     <ImageView
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="fitXY"
                         android:src="@drawable/dev_img"
-                        android:scaleType="centerCrop"
                         tools:ignore="ContentDescription" />
                     <!--tools:src="@tools:sample/avatars[10]"-->
 
