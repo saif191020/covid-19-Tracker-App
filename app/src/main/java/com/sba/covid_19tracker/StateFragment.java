@@ -30,6 +30,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
+import com.google.android.material.snackbar.Snackbar;
 import com.sba.covid_19tracker.District.DistrictAdapter;
 import com.sba.covid_19tracker.District.DistrictModelClass;
 
@@ -55,8 +56,9 @@ public class StateFragment extends Fragment {
     private Button Zone_btn;
     NavController navController;
     public static final String my_pref_key = "sba_data";
-    public static final String KEY_STATE_FIRST = "FIRST_STATE_RUN";
+    public static final String KEY_STATE_FIRST = "FIRST_STATE_RUN_V2";
     private SharedPreferences sharedPreferences;
+    private View tview;
 
     public StateFragment() {
         // Required empty public constructor
@@ -105,6 +107,7 @@ public class StateFragment extends Fragment {
         //  getActivity().get;
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         requestQueue = Volley.newRequestQueue(getActivity());
+        tview = view;
         parseJson();
     }
 
@@ -132,8 +135,15 @@ public class StateFragment extends Fragment {
                                     JSONObject district = districtdata.getJSONObject(k);
                                     String dist_name = district.getString("district");
                                     int confirmed = Integer.parseInt(district.getString("confirmed"));
+                                    int recovered = Integer.parseInt(district.getString("recovered"));
+                                    int deceased = Integer.parseInt(district.getString("deceased"));
+
                                     int dcon = Integer.parseInt(district.getJSONObject("delta").getString("confirmed"));
-                                    DistrictList.add(new DistrictModelClass(dist_name, confirmed, dcon));
+                                    int dded = Integer.parseInt(district.getJSONObject("delta").getString("deceased"));
+                                    int drec = Integer.parseInt(district.getJSONObject("delta").getString("recovered"));
+
+
+                                    DistrictList.add(new DistrictModelClass(dist_name, confirmed, dcon, recovered, drec, deceased, dded));
                                 }
                                 Collections.sort(DistrictList);
                                 adapter = new DistrictAdapter(getActivity(), DistrictList);
@@ -186,6 +196,13 @@ public class StateFragment extends Fragment {
                                     .id(2)
                     );
             sequence.start();
+            Snackbar.make(tview, "Click on the District Name to see more detail", Snackbar.LENGTH_INDEFINITE)
+                    .setAction(R.string.okay, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    }).show();
         }
 
     }

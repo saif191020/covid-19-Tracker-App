@@ -10,4 +10,14 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
 
+    <style name="expan_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/work_sans</item>
+    </style>
+
 </resources>
