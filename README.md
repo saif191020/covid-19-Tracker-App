@@ -12,7 +12,7 @@ The [The News Api](https://newsapi.org/) was used to provide the Covid related N
 
 ## ⬇Download 
 Download and try the app.
-Download from Releases page [**here**](https://github.com/saif191020/covid-19-Tracker-App/releases) or from Google Drive Link [**here**](https://drive.google.com/file/d/12O0kmygwandfQFgPDCV1FsyQkzIY1cYk/view?usp=sharing)
+Download from Releases page [**here**](https://github.com/saif191020/covid-19-Tracker-App/releases) or from Google Drive Link [**here**](https://drive.google.com/file/d/1pMILCKJHebjH-xmmYH-EL3PfMyED2ARM/view?usp=sharing)
 
 
 ## 📸 Screenshots
@@ -43,8 +43,8 @@ Download from Releases page [**here**](https://github.com/saif191020/covid-19-Tr
 |[**Covid19Api**](https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest#intro)| World Tracker Details|
 |[**News API**](https://newsapi.org/)| InApp Covid related News|
 |[**Glide Library**](https://github.com/bumptech/glide/)| An image loading and caching library for Android|
-|[**Volley Library**](https://developer.android.com/training/volley)| HTTP library used for networking for Android apps|
-|[**TapTargetView Library**](https://github.com/KeepSafe/TapTargetView)| Meterila Design Spotlight for feature discovery|
+|[**Volley Library**](https://developer.android.com/training/volley)| HTTP library used for networking in Android apps|
+|[**TapTargetView Library**](https://github.com/KeepSafe/TapTargetView)| Material Design Spotlight for feature discovery|
 
 
 
