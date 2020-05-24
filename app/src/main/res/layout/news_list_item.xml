@@ -23,9 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="newsImage"
-
-            android:scaleType="fitXY"
-            android:src="@drawable/sampleimage" />
+            tools:srcCompat="@tools:sample/backgrounds/scenic"
+            android:scaleType="fitXY" />
     </androidx.cardview.widget.CardView>
 
     <View
