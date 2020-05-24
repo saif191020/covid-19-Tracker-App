@@ -10,6 +10,10 @@ The [The News Api](https://newsapi.org/) was used to provide the Covid related N
 - [x] See Covid-19 cases in World .
 - [x] See India Lock Down Zones.
 
+## ⬇Download 
+Download and try the app.
+Download from Releases page [**here**](https://github.com/saif191020/covid-19-Tracker-App/releases) or from Google Drive Link [**here**](https://drive.google.com/file/d/12O0kmygwandfQFgPDCV1FsyQkzIY1cYk/view?usp=sharing)
+
 
 ## 📸 Screenshots
 <div style="background-color:rgb(169,169,169); text-align:center">
