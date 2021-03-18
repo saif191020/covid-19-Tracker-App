@@ -104,6 +104,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_menuFragment_to_liveMapFragment"
+            app:destination="@id/liveMapFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
@@ -120,4 +127,9 @@
         android:name="com.sba.covid_19tracker.UpdateFragment"
         android:label="fragment_update"
         tools:layout="@layout/fragment_update" />
+    <fragment
+        android:id="@+id/liveMapFragment"
+        android:name="com.sba.covid_19tracker.LiveMapFragment"
+        android:label="fragment_live_map"
+        tools:layout="@layout/fragment_live_map" />
 </navigation>

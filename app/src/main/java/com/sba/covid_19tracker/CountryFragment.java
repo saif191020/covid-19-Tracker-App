@@ -39,9 +39,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 
 public class CountryFragment extends Fragment implements StateAdapter.OnStateItemClicked {
+
     private NavController navController;
     private RecyclerView recyclerView;
     private StateAdapter adapter;
@@ -57,12 +59,15 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
 
     public static final String my_pref_key = "sba_data";
     public static final String KEY_FIRST = "FIRST_RUN_v2";
+
+
     private SharedPreferences sharedPreferences;
 
     public CountryFragment() {
         // Required empty public constructor
     }
 
+    private int current_sort = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -93,6 +98,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
         Globe_icon = view.findViewById(R.id.Globe_icon);
         Menu_icon = view.findViewById(R.id.Menu_icon);
         Last_updated = view.findViewById(R.id.Lastt_Updated);
+
 
         sharedPreferences = getActivity().getSharedPreferences(my_pref_key, Context.MODE_PRIVATE);
 
@@ -126,7 +132,22 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
                 parseJSON(cone, view);
             }
         });
-
+        view.findViewById(R.id.sort_state).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (current_sort % 3 == 0) {
+                    Collections.sort(StateList, new SortByStateName());
+                    adapter.notifyDataSetChanged();
+                } else if (current_sort % 3 == 1) {
+                    Collections.sort(StateList, Collections.reverseOrder(new SortByStateName()));
+                    adapter.notifyDataSetChanged();
+                } else if (current_sort % 3 == 2) {
+                    Collections.sort(StateList, Collections.reverseOrder(new SortByStateCase()));
+                    adapter.notifyDataSetChanged();
+                }
+                current_sort++;
+            }
+        });
 
     }
 
@@ -216,7 +237,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
 
                             }
                             Log.d(TAG, "Country Frage : " + "done with all stuff");
-                            Collections.sort(StateList);
+                            Collections.sort(StateList, Collections.reverseOrder(new SortByStateCase()));
                             adapter = new StateAdapter(getActivity(), con, StateList);
                             recyclerView.setAdapter(adapter);
                             swipeRefreshLayout.setRefreshing(false);
@@ -260,5 +281,23 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
         ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
+
+
+}
+
+class SortByStateName implements Comparator<StateModelClass> {
+
+    @Override
+    public int compare(StateModelClass t1, StateModelClass t2) {
+        return t1.getStateName().compareTo(t2.getStateName());
+    }
+}
+
+class SortByStateCase implements Comparator<StateModelClass> {
+
+    @Override
+    public int compare(StateModelClass t1, StateModelClass t2) {
+        return t1.getCon() - t2.getCon();
     }
 }

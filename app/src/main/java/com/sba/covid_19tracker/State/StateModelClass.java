@@ -1,6 +1,6 @@
 package com.sba.covid_19tracker.State;
 
-public class StateModelClass implements Comparable {
+public class StateModelClass {
     private String stateName;
     private int Con, dCon, Dec, dDec, Rec, dRec;
 
@@ -69,10 +69,5 @@ public class StateModelClass implements Comparable {
         Rec = rec;
         this.dRec = dRec;
     }
-    @Override
-    public int compareTo(Object o) {
-        int comparecase=((StateModelClass)o).getCon();
-        return comparecase-this.Con;
 
-    }
 }

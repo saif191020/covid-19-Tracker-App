@@ -73,7 +73,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/news_icon_iv" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/update_constrain"
                 android:layout_width="130dp"
@@ -112,7 +111,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/about_constrain"
+                android:id="@+id/map_constrain"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginStart="32dp"
@@ -120,6 +119,43 @@
                 android:background="@drawable/dark_bg_v2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/news_constrain">
+
+                <ImageView
+                    android:id="@+id/map_icon"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/mapicon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/map_btn_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/work_sans"
+                    android:text="Live Map"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/map_icon" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/about_constrain"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/dark_bg_v2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/update_constrain">
 
                 <ImageView
                     android:id="@+id/about_icon"

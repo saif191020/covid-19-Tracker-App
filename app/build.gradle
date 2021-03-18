@@ -45,4 +45,10 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
+    //activity
+    def activity_version = "1.1.0"
+
+    // Java language implementation
+    implementation "androidx.activity:activity:$activity_version"
+
 }

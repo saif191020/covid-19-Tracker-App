@@ -22,7 +22,7 @@ public class MenuFragment extends Fragment {
         // Required empty public constructor
     }
 
-    private ConstraintLayout news, about, updates;
+    private ConstraintLayout news, about, updates, map;
     private NavController navController;
 
 
@@ -46,6 +46,8 @@ public class MenuFragment extends Fragment {
         news = view.findViewById(R.id.news_constrain);
         about = view.findViewById(R.id.about_constrain);
         updates = view.findViewById(R.id.update_constrain);
+        map = view.findViewById(R.id.map_constrain);
+
         navController = Navigation.findNavController(view);
 
         news.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +66,12 @@ public class MenuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.action_menuFragment_to_updateFragment);
+            }
+        });
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_menuFragment_to_liveMapFragment);
             }
         });
 
