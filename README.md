@@ -12,7 +12,7 @@ The [The News Api](https://newsapi.org/) was used to provide the Covid related N
 
 ## ⬇Download 
 Download and try the app.
-Download from Releases page [**here**](https://github.com/saif191020/covid-19-Tracker-App/releases) or from Google Drive Link [**here**](https://drive.google.com/file/d/1pMILCKJHebjH-xmmYH-EL3PfMyED2ARM/view?usp=sharing)
+Download from Releases page [**here**](https://github.com/saif191020/covid-19-Tracker-App/releases) or from Google Drive Link [**here**](https://drive.google.com/file/d/1Vdq6vGQfpiFzZmGtiBN1DXy8HeP3vPjq/view?usp=sharing)
 
 
 ## 📸 Screenshots
