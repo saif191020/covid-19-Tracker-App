@@ -1,16 +1,9 @@
 package com.sba.covid_19tracker;
 
+import static com.sba.covid_19tracker.Constants.MAP_DATA_URL;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.NavHostController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +11,12 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 
 public class LiveMapFragment extends Fragment {
@@ -43,6 +42,7 @@ public class LiveMapFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_live_map, container, false);
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -51,8 +51,7 @@ public class LiveMapFragment extends Fragment {
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://www.bing.com/covid");
-        Boolean back_status;
+        webView.loadUrl(MAP_DATA_URL);
         view.findViewById(R.id.btn_cls).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

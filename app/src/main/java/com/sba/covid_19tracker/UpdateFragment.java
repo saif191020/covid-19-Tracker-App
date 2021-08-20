@@ -1,16 +1,10 @@
 package com.sba.covid_19tracker;
 
+import static com.sba.covid_19tracker.Constants.INDIA_UPDATES_DATA;
+
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +12,18 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.sba.covid_19tracker.News.NewsAdapter;
-import com.sba.covid_19tracker.News.NewsModelClass;
 import com.sba.covid_19tracker.Update.UpdateAdapter;
 import com.sba.covid_19tracker.Update.UpdateModelClass;
 
@@ -35,6 +33,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 
 public class UpdateFragment extends Fragment {
@@ -72,7 +71,7 @@ public class UpdateFragment extends Fragment {
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue = Volley.newRequestQueue(Objects.requireNonNull(getActivity()));
 
         Log.d(TAG, "ABOUT TO SEND RQUEST");
 
@@ -83,9 +82,8 @@ public class UpdateFragment extends Fragment {
 
     private void parseJSON() {
         Log.d(TAG, "Connecting...");
-        String url = "https://api.covid19india.org/updatelog/log.json";
 
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, INDIA_UPDATES_DATA, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -114,7 +112,7 @@ public class UpdateFragment extends Fragment {
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
                         p1.setVisibility(View.GONE);
-                        Log.d(TAG, "SOME PROBLEM " + String.valueOf(error));
+                        Log.d(TAG, "SOME PROBLEM " + error);
                         if (isNetworkConnected())
                             Toast.makeText(getActivity(), "Something Went wrong ! Try Again later", Toast.LENGTH_SHORT).show();
                         else
@@ -130,7 +128,7 @@ public class UpdateFragment extends Fragment {
     }
 
     private boolean isNetworkConnected() {
-        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) Objects.requireNonNull(getActivity()).getSystemService(Context.CONNECTIVITY_SERVICE);
 
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }

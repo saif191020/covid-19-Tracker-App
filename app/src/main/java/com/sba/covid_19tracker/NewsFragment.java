@@ -4,19 +4,18 @@ package com.sba.covid_19tracker;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class NewsFragment extends Fragment {
@@ -67,9 +67,10 @@ public class NewsFragment extends Fragment {
         newsList = new ArrayList<>();
         p1 = view.findViewById(R.id.progressBar4);
 
+        HttpsTrustManager.allowAllSSL();//**** PLEASE DONT DO THIS IN PRODUCTION ********
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue = Volley.newRequestQueue(Objects.requireNonNull(getActivity()));
 
         Log.d(TAG, "ABOUT TO SEND RQUEST");
 
@@ -80,12 +81,12 @@ public class NewsFragment extends Fragment {
 
     private void parseJSON() {
         Log.d(TAG, "Connecting...");
-        String url = "http://newsapi.org/v2/top-headlines?country=in&apiKey=" + NewsApi.key + "&q=covid";
+        String url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=" + NewsApi.key + "&q=covid";
+
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-
                         Log.d(TAG, "Connected");
                         try {
                             p1.setVisibility(View.GONE);
@@ -118,7 +119,7 @@ public class NewsFragment extends Fragment {
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
                         p1.setVisibility(View.GONE);
-                        Log.d(TAG, "SOME PROBLEM " + String.valueOf(error));
+                        Log.d(TAG, "SOME PROBLEM " + error);
                         if (isNetworkConnected())
                             Toast.makeText(getActivity(), "Something Went wrong ! Try Again later", Toast.LENGTH_SHORT).show();
                         else

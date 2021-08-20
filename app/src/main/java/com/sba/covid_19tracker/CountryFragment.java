@@ -1,9 +1,18 @@
 package com.sba.covid_19tracker;
 
+import static com.sba.covid_19tracker.Constants.INDIA_DATA_URL;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,14 +22,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -196,7 +197,7 @@ public class CountryFragment extends Fragment implements StateAdapter.OnStateIte
     }
 
     private void parseJSON(final StateAdapter.OnStateItemClicked con, final View view) {
-        String url = "https://api.covid19india.org/data.json";
+        String url = INDIA_DATA_URL;
         swipeRefreshLayout.setRefreshing(true);
         StateList = new ArrayList<>();
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
