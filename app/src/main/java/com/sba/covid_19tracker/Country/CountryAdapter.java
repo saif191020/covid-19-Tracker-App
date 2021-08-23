@@ -1,5 +1,6 @@
-package com.sba.covid_19tracker.Countrie;
+package com.sba.covid_19tracker.Country;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CountryViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull CountryViewHolder holder, @SuppressLint("RecyclerView") int position) {
         CountryModelClass country = CountryList.get(position);
 
         holder.country_name.setText(country.getCountryName());

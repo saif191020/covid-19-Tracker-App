@@ -1,4 +1,4 @@
-package com.sba.covid_19tracker;
+package com.sba.covid_19tracker.State;
 
 import static com.sba.covid_19tracker.Constants.INDIA_DATA_URL;
 
@@ -31,8 +31,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
-import com.sba.covid_19tracker.State.StateAdapter;
-import com.sba.covid_19tracker.State.StateModelClass;
+import com.sba.covid_19tracker.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

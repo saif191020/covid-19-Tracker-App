@@ -8,9 +8,15 @@ android {
         applicationId "com.sba.covid_19tracker"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 6
-        versionName "1.6"
+        versionCode 7
+        versionName "1.6.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    android {
+        compileOptions {
+            sourceCompatibility 1.8
+            targetCompatibility 1.8
+        }
     }
     buildTypes {
         release {
@@ -50,5 +56,12 @@ dependencies {
 
     // Java language implementation
     implementation "androidx.activity:activity:$activity_version"
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.5.0'
+
+
 
 }

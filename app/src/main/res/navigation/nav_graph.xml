@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/countryFragment"
-        android:name="com.sba.covid_19tracker.CountryFragment"
+        android:name="com.sba.covid_19tracker.State.CountryFragment"
         android:label="fragment_country"
         tools:layout="@layout/fragment_country">
         <action
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/stateFragment"
-        android:name="com.sba.covid_19tracker.StateFragment"
+        android:name="com.sba.covid_19tracker.District.StateFragment"
         android:label="fragment_state"
         tools:layout="@layout/fragment_state">
         <argument
@@ -65,12 +65,12 @@
     </fragment>
     <fragment
         android:id="@+id/worldFragment"
-        android:name="com.sba.covid_19tracker.WorldFragment"
+        android:name="com.sba.covid_19tracker.Country.WorldFragment"
         android:label="fragment_world"
         tools:layout="@layout/fragment_world" />
     <fragment
         android:id="@+id/zonesFragment"
-        android:name="com.sba.covid_19tracker.ZonesFragment"
+        android:name="com.sba.covid_19tracker.Zone.ZonesFragment"
         android:label="fragment_zones"
         tools:layout="@layout/fragment_zones">
         <argument
@@ -114,7 +114,7 @@
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.sba.covid_19tracker.NewsFragment"
+        android:name="com.sba.covid_19tracker.News.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" />
     <fragment

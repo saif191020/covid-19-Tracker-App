@@ -14,17 +14,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.sba.covid_19tracker.News.model.Article;
 import com.sba.covid_19tracker.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
 
     Context context;
-    ArrayList<NewsModelClass> newsList;
+    List<Article> newsList;
 
 
-    public NewsAdapter(Context context, ArrayList<NewsModelClass> newsList) {
+    public NewsAdapter(Context context, List<Article> newsList) {
         this.context = context;
         this.newsList = newsList;
     }
@@ -38,22 +39,19 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
-        final NewsModelClass news = newsList.get(position);
+        final Article news = newsList.get(position);
 
-        holder.source.setText(news.getSourceName());
+        holder.source.setText(news.getSource().getName());
         holder.title.setText(news.getTitle());
         holder.decription.setText(news.getDescription());
         Glide
                 .with(context)
-                .load(news.getUrlImage())
+                .load(news.getUrlToImage())
                 .into(holder.newsImage);
 
-        holder.readMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(news.getUrl()));
-                context.startActivity(browserIntent);
-            }
+        holder.readMore.setOnClickListener(view -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(news.getUrl()));
+            context.startActivity(browserIntent);
         });
     }
 
@@ -62,7 +60,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         return newsList.size();
     }
 
-    public class NewsViewHolder extends RecyclerView.ViewHolder {
+    static class NewsViewHolder extends RecyclerView.ViewHolder {
         public TextView source, title, decription;
         public Button readMore;
         public ImageView newsImage;

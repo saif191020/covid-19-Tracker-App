@@ -1,4 +1,4 @@
-package com.sba.covid_19tracker;
+package com.sba.covid_19tracker.District;
 
 import static com.sba.covid_19tracker.Constants.INDIA_STATE_DATA_URL;
 
@@ -32,8 +32,7 @@ import com.android.volley.toolbox.Volley;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.google.android.material.snackbar.Snackbar;
-import com.sba.covid_19tracker.District.DistrictAdapter;
-import com.sba.covid_19tracker.District.DistrictModelClass;
+import com.sba.covid_19tracker.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

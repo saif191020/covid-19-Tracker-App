@@ -1,4 +1,4 @@
-package com.sba.covid_19tracker;
+package com.sba.covid_19tracker.Country;
 
 import static com.sba.covid_19tracker.Constants.WORLD_DATA_URL;
 
@@ -25,8 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.sba.covid_19tracker.Countrie.CountryAdapter;
-import com.sba.covid_19tracker.Countrie.CountryModelClass;
+import com.sba.covid_19tracker.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

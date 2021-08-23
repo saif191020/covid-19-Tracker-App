@@ -1,4 +1,4 @@
-package com.sba.covid_19tracker;
+package com.sba.covid_19tracker.Zone;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -23,8 +23,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.sba.covid_19tracker.Zone.ZoneAdapter;
-import com.sba.covid_19tracker.Zone.ZoneModelClass;
+import com.sba.covid_19tracker.Constants;
+import com.sba.covid_19tracker.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
